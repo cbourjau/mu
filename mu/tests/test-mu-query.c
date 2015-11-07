@@ -38,6 +38,7 @@
 
 static char* DB_PATH1 = NULL;
 static char* DB_PATH2 = NULL;
+static char* DB_PATH5 = NULL;
 
 static gchar*
 fill_database (const char *testdir)
@@ -682,6 +683,22 @@ test_mu_query_preprocess (void)
 	}
 }
 
+static void
+test_mu_query_multiple_contacts (void)
+{
+	int i;
+	QResults queries[] = {
+		{ "Bohr", 1},      // one of the two contacts in the multi-contacts email
+		{ "buddies", 1}    // a word from the body of the multi-contacts email
+	};
+	printf(DB_PATH5);
+ 	for (i = 0; i != G_N_ELEMENTS(queries); ++i)
+		g_assert_cmpuint (run_and_count_matches (DB_PATH5,
+							 queries[i].query),
+				  ==, queries[i].count);
+}
+
+
 
 int
 main (int argc, char *argv[])
@@ -697,6 +714,12 @@ main (int argc, char *argv[])
 
 	DB_PATH2 = fill_database (MU_TESTMAILDIR2);
 	g_assert (DB_PATH2);
+
+	DB_PATH5 = fill_database (MU_TESTMAILDIR5);
+	g_assert (DB_PATH5);
+
+	g_test_add_func ("/mu-query/test-mu-query-multiple-contacts",
+			 test_mu_query_multiple_contacts);
 
 	g_test_add_func ("/mu-query/test-mu-query-preprocess",
 			 test_mu_query_preprocess);
@@ -745,6 +768,7 @@ main (int argc, char *argv[])
 
 	g_test_add_func ("/mu-query/test-mu-query-threads-compilation-error",
 			 test_mu_query_threads_compilation_error);
+	
 
 	if (!g_test_verbose())
 	    g_log_set_handler (NULL,

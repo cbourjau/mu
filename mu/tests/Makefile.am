@@ -26,6 +26,7 @@ AM_CPPFLAGS=$(XAPIAN_CXXFLAGS)						\
 	-DMU_TESTMAILDIR2=\"${abs_top_srcdir}/lib/tests/testdir2\"	\
 	-DMU_TESTMAILDIR3=\"${abs_top_srcdir}/lib/tests/testdir3\"	\
 	-DMU_TESTMAILDIR4=\"${abs_top_srcdir}/lib/tests/testdir4\"	\
+	-DMU_TESTMAILDIR5=\"${abs_top_srcdir}/lib/tests/testdir5\"	\
 	-DMU_PROGRAM=\"${abs_top_builddir}/mu/mu\"			\
 	-DABS_CURDIR=\"${abs_builddir}\"				\
 	-DABS_SRCDIR=\"${abs_srcdir}\"

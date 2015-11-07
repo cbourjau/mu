@@ -25,6 +25,7 @@ AM_CPPFLAGS=$(XAPIAN_CXXFLAGS)					\
 	-DMU_TESTMAILDIR2=\"${abs_srcdir}/testdir2\"		\
 	-DMU_TESTMAILDIR3=\"${abs_srcdir}/testdir3\"		\
 	-DMU_TESTMAILDIR4=\"${abs_srcdir}/testdir4\"		\
+	-DMU_TESTMAILDIR5=\"${abs_srcdir}/testdir5\"		\
 	-DABS_CURDIR=\"${abs_builddir}\"			\
 	-DABS_SRCDIR=\"${abs_srcdir}\"
 
@@ -187,4 +188,5 @@ EXTRA_DIST=						\
 	testdir4/signed!2,S				\
 	testdir4/signed-bad!2,S				\
 	testdir4/signed-encrypted!2,S			\
-	testdir4/special!2,Sabc
+	testdir4/special!2,Sabc				\
+	testdir5/cur/atomic
